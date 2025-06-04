@@ -1,0 +1,240 @@
+body {
+    font-family: 'Roboto Mono', monospace;
+    background-color: #0d0221;
+    color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    background: rgba(10, 5, 30, 0.8);
+    padding: 1rem 0;
+    border-bottom: 2px solid #ff00ff;
+}
+
+.prompt {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    color: #00ff00;
+    text-shadow: 0 0 5px #00ff00;
+    margin: 5px 0;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.logo h1 {
+    font-family: 'VT323', monospace;
+    font-size: 3em;
+    color: #00ffff;
+    margin: 0;
+    text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff;
+}
+
+.logo .sub-logo {
+    font-family: 'VT323', monospace;
+    color: #ff00ff;
+    font-size: 1.2em;
+}
+
+nav {
+    margin-top: 1rem;
+}
+
+nav a {
+    color: #9f78ff;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 1.1em;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+nav a:hover {
+    color: #ff00ff;
+    text-shadow: 0 0 5px #ff00ff;
+}
+
+main section {
+    background: rgba(20, 10, 40, 0.7);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border: 1px solid #301934;
+    box-shadow: 0 0 15px rgba(255, 0, 255, 0.3);
+}
+
+main section h2 {
+    font-family: 'VT323', monospace;
+    color: #00ffff;
+    font-size: 2em;
+    border-bottom: 1px dashed #ff00ff;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.prompt {
+    color: #39ff14;
+    font-family: 'VT323', monospace;
+    font-size: 1.1em;
+    margin-bottom: 0.5em;
+}
+
+.jp-char {
+    font-family: 'Noto Sans JP', sans-serif;
+    color: #ff00ff;
+    margin-left: 5px;
+}
+
+#hero {
+    text-align: center;
+    padding: 3rem 1rem;
+    background: linear-gradient(45deg, #0d0221, #240046);
+}
+
+#hero h2 {
+    font-size: 2.5em;
+    margin-bottom: 1rem;
+    color: #ff00ff;
+}
+
+#typing-effect {
+    font-size: 1.2em;
+    color: #f0f0f0;
+    min-height: 1.5em;
+    margin-bottom: 1em;
+}
+
+.profile-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.profile-card {
+    background: rgba(0,0,0,0.3);
+    padding: 1rem;
+    border-left: 3px solid #00ffff;
+}
+
+.profile-card h3 {
+    color: #9f78ff;
+    margin-top: 0;
+    font-family: 'VT323', monospace;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.project-item {
+    background: rgba(0,0,0,0.4);
+    padding: 1.5rem;
+    border: 1px solid #301934;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+}
+
+.project-item h3 a {
+    color: #00ffff;
+    text-decoration: none;
+    font-family: 'VT323', monospace;
+    font-size: 1.5em;
+}
+
+.project-item h3 a:hover {
+    text-decoration: underline;
+    color: #ff00ff;
+}
+
+.project-item p {
+    font-size: 0.9em;
+    color: #cccccc;
+}
+
+.cv-link {
+    text-align: center;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ff00ff;
+    color: #0d0221;
+    text-decoration: none;
+    font-family: 'VT323', monospace;
+    font-size: 1.2em;
+    border: 2px solid #00ffff;
+    box-shadow: 0 0 10px #ff00ff;
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+    margin-top: 1rem;
+}
+
+.button:hover {
+    background-color: #00ffff;
+    color: #0d0221;
+    box-shadow: 0 0 15px #00ffff;
+}
+
+#contact ul {
+    list-style: none;
+    padding: 0;
+}
+
+#contact li {
+    margin-bottom: 0.5rem;
+}
+
+#contact a {
+    color: #9f78ff;
+    text-decoration: none;
+    font-size: 1.1em;
+}
+
+#contact a:hover {
+    color: #00ffff;
+    text-decoration: underline;
+}
+
+.hero-text {
+    text-align: center;
+}
+
+.glitch {
+    position: relative;
+    color: #f0f0f0;
+}
+
+footer {
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 2rem;
+    border-top: 2px solid #ff00ff;
+    color: #9f78ff;
+    font-size: 0.9em;
+}
+
+@media (max-width: 768px) {
+    .logo h1 {
+        font-size: 2.5em;
+    }
+    nav a {
+        display: block;
+        margin: 10px 0;
+    }
+    .profile-grid, .projects-grid {
+        grid-template-columns: 1fr;
+    }
+}
