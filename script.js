@@ -30,10 +30,21 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const messages = [
-        // "Initializing system...",
-        // "Loading user profile...",
-        // "Establishing secure connection...",
-        "Welcome to my digital space.",
+        "re/Starting modules...",
+    ];
+
+    const bootOverlay = document.getElementById('boot-overlay');
+    const bootLine = document.getElementById('boot-line');
+    const bodyEl = document.body;
+    const BOOT_INTERVAL_MS = 5 * 60 * 1000;
+    const lastBoot = Number(localStorage.getItem('lastBoot')) || 0;
+    const shouldShowBoot = !lastBoot || (Date.now() - lastBoot) > BOOT_INTERVAL_MS;
+    const bootMessages = [
+        "Bootloader vØ.91",
+        "Initializing system...",
+        "User. A.I.D_vØ initialized.",
+        "Loading modules... 「接続中」",
+        "Module initialized."
     ];
 
     const welcomeMessages = document.querySelectorAll('.prompt');
@@ -41,6 +52,48 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let messageIndex = 0;
     const typingEffect = document.getElementById('typing-effect');
+
+    function typeBootLine(line, done, index = 0) {
+        if (!bootLine) {
+            done();
+            return;
+        }
+        if (index < line.length) {
+            bootLine.textContent = line.slice(0, index + 1);
+            setTimeout(() => typeBootLine(line, done, index + 1), 22);
+        } else {
+            setTimeout(done, 280);
+        }
+    }
+
+    function runBootSequence(step = 0) {
+        if (!bootOverlay) {
+            startMainSequence();
+            return;
+        }
+        if (!shouldShowBoot) {
+            bodyEl.classList.add('boot-complete');
+            bootOverlay.style.display = 'none';
+            startMainSequence();
+            return;
+        }
+        if (step < bootMessages.length) {
+            typeBootLine(bootMessages[step], () => runBootSequence(step + 1));
+        } else {
+            finishBoot();
+        }
+    }
+
+    function finishBoot() {
+        bodyEl.classList.add('boot-complete');
+        localStorage.setItem('lastBoot', Date.now().toString());
+        setTimeout(() => {
+            if (bootOverlay) {
+                bootOverlay.style.display = 'none';
+            }
+            startMainSequence();
+        }, 900);
+    }
     
     function typeMessage(message, index = 0) {
         if (index < message.length) {
@@ -64,7 +117,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    typeMessage(messages[0]);
+    function startMainSequence() {
+        typingEffect.textContent = '';
+        typeMessage(messages[0]);
+    }
+
+    runBootSequence();
 
     const glitchTexts = document.querySelectorAll('.glitch');
     glitchTexts.forEach(text => {
