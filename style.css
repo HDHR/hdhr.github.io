@@ -332,6 +332,8 @@ main section h2::before {
 [data-command-output] {
     opacity: 0;
     max-height: 0;
+    padding-bottom: 44px;
+    margin-bottom: -44px;
     overflow: hidden;
     transform: translateY(14px);
     pointer-events: none;
