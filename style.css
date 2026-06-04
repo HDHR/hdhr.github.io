@@ -329,6 +329,38 @@ main section h2::before {
     z-index: 1;
 }
 
+[data-command-output] {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transform: translateY(14px);
+    pointer-events: none;
+    transition: max-height 0.65s ease, opacity 0.55s ease 0.12s, transform 0.55s ease 0.12s;
+}
+
+[data-command-output].is-visible {
+    opacity: 1;
+    max-height: var(--output-height, 1200px);
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+[data-command-output].is-expanded {
+    overflow: visible;
+}
+
+[data-command-output] > * {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+[data-command-output].is-visible > * {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: calc(var(--output-index, 0) * 90ms);
+}
+
 .jp-char {
     font-family: 'Noto Sans JP', sans-serif;
     color: var(--accent-2);
