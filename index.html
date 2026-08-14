@@ -60,6 +60,15 @@
                         <p>&gt; Loading modules... <span class="jp-char">「接続中」</span></p>
                         <p>&gt; Module initialized.</p>
                     </div>
+
+                    <!-- Interactive CLI Prompt -->
+                    <div class="interactive-cli" id="cli-container">
+                        <div class="cli-input-line">
+                            <span class="prompt-user">hdhr@bruh</span>:<span class="prompt-path">~</span>$&nbsp;
+                            <input type="text" id="cli-input" placeholder="type 'help' or 'neofetch'..." autocomplete="off" spellcheck="false">
+                        </div>
+                        <div id="cli-output"></div>
+                    </div>
                 </div>
             </section>
 
@@ -87,6 +96,18 @@
                         <div class="profile-card">
                             <div class="card-label">Bio</div>
                             <div class="card-val code-style">$ cat /dev/soul | grep "truth" // My therapist told me to be more open, so here I am.</div>
+                        </div>
+                        <div class="profile-card full-width-card">
+                            <div class="card-label">Technical Stack</div>
+                            <div class="skills-badges">
+                                <span class="badge badge-python">Python</span>
+                                <span class="badge badge-js">JavaScript</span>
+                                <span class="badge badge-docker">Docker</span>
+                                <span class="badge badge-html">HTML5/CSS3</span>
+                                <span class="badge badge-confidential">Linux & Self-Hosted</span>
+                                <span class="badge badge-html">Git</span>
+                                <span class="badge badge-docker">REST APIs</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -132,9 +153,9 @@
                         <div class="project-item">
                             <div class="project-header">
                                 <h3><a href="https://ai.hdhr.my.id/" target="_blank">Odysseus Chat</a></h3>
-                                <span class="badge badge-odysseus">Odysseus</span>
+                                <span class="badge badge-js">Web App</span>
                             </div>
-                            <p>Self-hosted Odysseus instance experiment, an AI workspace project by PewDiePie with chat, agents, tools, memory, docs, and model testing. (Odysseus)</p>
+                            <p>Self-hosted Odysseus instance experiment, an AI workspace project by PewDiePie with chat, agents, tools, memory, docs, and model testing.</p>
                         </div>
                         <div class="project-item">
                             <div class="project-header">

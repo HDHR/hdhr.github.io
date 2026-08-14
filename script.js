@@ -53,7 +53,104 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // -------------------------------------------------------------
-    // 2. Scrollspy Active Nav Tab Highlighting
+    // 2. Interactive CLI Engine
+    // -------------------------------------------------------------
+    const cliInput = document.getElementById('cli-input');
+    const cliOutput = document.getElementById('cli-output');
+
+    if (cliInput && cliOutput) {
+        cliInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                const inputVal = cliInput.value.trim();
+                if (!inputVal) return;
+
+                const cmd = inputVal.toLowerCase();
+                cliInput.value = '';
+
+                cliOutput.innerHTML = '';
+
+                if (cmd === 'clear') {
+                    return;
+                }
+
+                const echoEl = document.createElement('div');
+                echoEl.className = 'cli-log-line cli-command-echo';
+                echoEl.innerHTML = `<span class="prompt-user">hdhr@bruh</span>:<span class="prompt-path">~</span>$&nbsp;${escapeHtml(inputVal)}`;
+                cliOutput.appendChild(echoEl);
+
+                const responseEl = document.createElement('div');
+                responseEl.className = 'cli-log-line';
+
+                switch (cmd) {
+                    case 'help':
+                        responseEl.innerHTML = `Available commands: <br>
+  - <span style="color: var(--yellow);">whoami</span> : Display user profile info<br>
+  - <span style="color: var(--yellow);">skills</span> : View technical stack<br>
+  - <span style="color: var(--yellow);">neofetch</span> : Show system information<br>
+  - <span style="color: var(--yellow);">projects</span> : Jump to project directory<br>
+  - <span style="color: var(--yellow);">contact</span> : Jump to comms link<br>
+  - <span style="color: var(--yellow);">clear</span> : Clear terminal output`;
+                        break;
+
+                    case 'whoami':
+                        responseEl.innerHTML = `<span style="color: var(--green);">Handle:</span> HDHR / AyyIsDedzzz | <span style="color: var(--blue);">Location:</span> Indonesia 「インドネシア」`;
+                        break;
+
+                    case 'skills':
+                        responseEl.innerHTML = `<span style="color: var(--green);">Stack:</span> Python, JavaScript, Docker, HTML5/CSS3, Linux & Self-Hosted, Git, REST APIs`;
+                        break;
+
+                    case 'neofetch':
+                        responseEl.className = 'cli-neofetch';
+                        responseEl.textContent = 
+`  .-.      hdhr@bruh
+ (o.o)     ---------
+  |=|      OS: HDHR System x86_64
+  "="      Host: A.I.D_vØ [Project: ガブッ]
+           Kernel: 6.8.0-custom
+           Uptime: 24/7 Online
+           Shell: bruh-sh v1.0
+           Theme: AMOLED Dark Terminal`;
+                        break;
+
+                    case 'projects':
+                        responseEl.innerHTML = `Navigating to projects...`;
+                        const projSec = document.getElementById('projects');
+                        if (projSec) projSec.scrollIntoView({ behavior: 'smooth' });
+                        break;
+
+                    case 'contact':
+                        responseEl.innerHTML = `Navigating to contact info...`;
+                        const contactSec = document.getElementById('contact');
+                        if (contactSec) contactSec.scrollIntoView({ behavior: 'smooth' });
+                        break;
+
+                    case 'sudo':
+                    case 'sudo request_access':
+                        responseEl.className = 'cli-log-line cli-error';
+                        responseEl.innerHTML = `[ ERROR ] Access level CONFIDENTIAL. Elevated privileges required.`;
+                        break;
+
+                    default:
+                        responseEl.className = 'cli-log-line cli-error';
+                        responseEl.innerHTML = `command not found: ${escapeHtml(cmd)}. Type '<span style="color: var(--yellow);">help</span>' for available commands.`;
+                        break;
+                }
+
+                cliOutput.appendChild(responseEl);
+                cliOutput.scrollTop = cliOutput.scrollHeight;
+            }
+        });
+    }
+
+    function escapeHtml(str) {
+        return str.replace(/[&<>"']/g, function(m) {
+            return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[m];
+        });
+    }
+
+    // -------------------------------------------------------------
+    // 3. Scrollspy Active Nav Tab Highlighting
     // -------------------------------------------------------------
     const sections = document.querySelectorAll('main section[id]');
     const navTabs = document.querySelectorAll('nav .nav-tab');
@@ -76,7 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // -------------------------------------------------------------
-    // 3. Cookie & LocalStorage Memory for Bootloader State
+    // 4. Cookie & LocalStorage Memory for Bootloader State
     // -------------------------------------------------------------
     function getCookie(name) {
         const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
@@ -155,7 +252,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('resize', updateOutputHeights);
 
     // -------------------------------------------------------------
-    // 4. Sequential Terminal Execution & Output Reveal Engine
+    // 5. Sequential Terminal Execution & Output Reveal Engine
     // -------------------------------------------------------------
     const bootMessages = [
         "Bootloader vØ.91",

@@ -377,6 +377,62 @@ main section h2 {
   font-size: 0.92rem;
 }
 
+/* ── Interactive CLI Prompt ── */
+.interactive-cli {
+  margin-top: 14px;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 12px 14px;
+}
+
+.cli-input-line {
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
+#cli-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--yellow);
+  font-family: var(--font-family);
+  font-size: 0.9rem;
+}
+
+#cli-output {
+  margin-top: 8px;
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.cli-log-line {
+  margin: 4px 0;
+  color: var(--fg);
+}
+
+.cli-command-echo {
+  color: var(--muted);
+}
+
+.cli-error {
+  color: var(--red);
+}
+
+.cli-neofetch {
+  white-space: pre-wrap;
+  font-size: 0.82rem;
+  line-height: 1.35;
+  color: var(--fg);
+  background: rgba(4, 5, 7, 0.8);
+  border: 1px dashed var(--border);
+  padding: 10px 14px;
+  border-radius: 6px;
+  margin: 8px 0;
+}
+
 /* ── Dynamic Command Outputs ── */
 [data-command-output] {
   opacity: 0;
@@ -430,6 +486,17 @@ main section h2 {
   border-color: var(--red);
 }
 
+.full-width-card {
+  grid-column: 1 / -1;
+}
+
+.skills-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
 .card-label {
   color: var(--muted);
   font-size: 0.8rem;
@@ -456,12 +523,27 @@ main section h2 {
   color: var(--green);
 }
 
+/* Pulsing / Blinking Green Online Dot */
 .status-dot {
   width: 8px;
   height: 8px;
   border-radius: 50%;
   background-color: var(--green);
   box-shadow: 0 0 8px var(--green);
+  animation: pulse-dot 1.8s infinite ease-in-out;
+}
+
+@keyframes pulse-dot {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 8px var(--green), 0 0 14px var(--green);
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.35;
+    box-shadow: 0 0 2px var(--green);
+    transform: scale(0.85);
+  }
 }
 
 /* ── Projects Grid & Badges ── */
